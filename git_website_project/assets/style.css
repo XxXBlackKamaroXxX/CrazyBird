@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    background: url("../js/img/bg.jpg") center no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
