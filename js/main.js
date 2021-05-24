@@ -49,28 +49,51 @@ let birdMove = 21;
 let grav = 1.3;
 let score = 0;
 let scoreTracks = [scoreAudioFirst, scoreAudioSecond, scoreAudioThird];
-let gap = 176;
+let gap = 80;
 let pipe = [];
-let pipeWidth = 196;
+let pipeWidth = 228;
 let pipeHeight = 777;
 let pipeYPos = -333;
 let pipeAdd = 777;
+let deathRangeX = 20;
+let deathRangeY = 40;
 
 pipe[0] = {
     x: width, 
     y: pipeYPos
 }
 
-if (width < 1000) {
+if  (height < 450 && width < 1000) {
     birdWidth = 35;
     birdHeight = 35;
     birdMove = 11;
     grav = 0.5;
-    pipeWidth = 70;
-    pipeHeight = 200;
+    gap = 25;
+    pipeWidth = 150;
+    pipeHeight = 250;
     pipeYPos = -75;
     pipeAdd = 410;
-    gap = 63;
+    deathRangeX = 13;
+    deathRangeY = 15;
+    pipe[0] = {
+        x: width,
+        y: pipeYPos
+    }
+}
+
+else if (height < 1000 && width < 450) {
+    birdY = 425;
+    birdWidth = 35;
+    birdHeight = 35;
+    birdMove = 21;
+    grav = 1.0;
+    gap = 16;
+    pipeWidth = 110;
+    pipeHeight = 550;
+    pipeYPos = -125;
+    pipeAdd = 310;
+    deathRangeX = 13;
+    deathRangeY = 27;
     pipe[0] = {
         x: width,
         y: pipeYPos
@@ -169,7 +192,7 @@ function draw() {
             });
         }
 
-        if (birdX + birdWidth >= pipe[i].x && birdX <= pipe[i].x + pipeWidth && (birdY <= pipe[i].y + pipeHeight || birdY + birdHeight >= pipe[i].y + pipeHeight + gap) || birdY + birdHeight >= height) {
+        if ((birdX + birdWidth - deathRangeX) >= pipe[i].x && birdX <= (pipe[i].x + pipeWidth) && (birdY <= (pipe[i].y + pipeHeight - deathRangeY) || (birdY + birdHeight) >= (pipe[i].y + pipeHeight + gap + deathRangeY)) || (birdY + birdHeight) >= height) {
            clearInterval(mainInterval);
            endAudio.play();
            setInterval(() => {
