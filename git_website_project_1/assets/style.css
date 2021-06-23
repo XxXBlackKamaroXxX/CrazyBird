@@ -1,0 +1,90 @@
+html, body { 
+    height: 100%; 
+    margin: 0; 
+} 
+
+body {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    background: url('bg.jpg') center no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+#menu {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+#header {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+#head, #eatenApples, #totalWins {
+    padding: 15px 0;
+    font-size: 2rem;
+    color: #1a0082;
+}
+
+#buttons {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-bottom: 20px;
+    background: #80808042;
+    font-size: 1.5rem;
+    color: #eeff64;
+    border-color: #00000061;
+    transition: transform 0.2s linear;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(2.1);
+}
+
+#exit {
+    background: #80808042;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #00ff14;
+    cursor: default;
+    border-width: 2px;
+    border-style: outset;
+    border-color: #0000008c;
+    margin-bottom: 40px;
+    padding: 1px 2px;
+    transition: transform 0.2s linear;
+}
+
+#exit:hover {
+    cursor: pointer;
+    transform: scale(2.1);
+}
+
