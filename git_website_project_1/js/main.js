@@ -1,7 +1,5 @@
 let totalEatenApples = 0;
 let bestWinStreak = 0;
-localStorage.setItem('eatenApples', totalEatenApples);
-localStorage.setItem('winStreak', bestWinStreak);
 
 function game() {
 
@@ -50,14 +48,6 @@ function game() {
 
     document.onkeydown = function(event) {
         if (event.keyCode == 27) {
-            if (localStorage.getItem('eatenApples', totalEatenApples) < totalEatenApples) {
-                localStorage.removeItem('eatenApples');
-                localStorage.setItem('eatenApples', totalEatenApples);
-            }
-            if (localStorage.getItem('winStreak', bestWinStreak) < bestWinStreak) {
-                localStorage.removeItem('winStreak');
-                localStorage.setItem('winStreak', bestWinStreak);
-            }
             audio.pause();
             clearInterval(mainInterval);
             showMenu();
@@ -235,17 +225,13 @@ totalWins.innerHTML = `Максимум побед подряд = ${bestWinStrea
 totalWins.setAttribute('id', 'totalWins');
 
 
-//Создание кнопок начала игры/выхода
+//Создание кнопок 
 
 let playButton = document.createElement('button');
 playButton.innerHTML = 'Играть';
 playButton.setAttribute('id', 'play');
 
-let exit = document.createElement('a', 'exit');
-exit.textContent = "Выход";
-exit.href = 'https://github.com/kofes/lab2';
-exit.setAttribute('id', 'exit');
-
+let appleSender = document.getElementById('appleSender');
 
 // Объединение элементов заголовка
 
@@ -257,13 +243,13 @@ header.append(totalWins);
 // Объединение кнопок 
 
 buttons.append(playButton);
-buttons.append(exit);
 
 
 // Объединение блоков (с заголовком и с кнопками)
 
 menu.append(header);
 menu.append(buttons);
+menu.append(appleSender);
 
 
 // Прогрузка меню после первого запуска
@@ -280,6 +266,7 @@ function showMenu() {
 
     eatenApples.innerHTML = `Всего съедено яблок = ${totalEatenApples}`;
     totalWins.innerHTML = `Максимум побед подряд = ${bestWinStreak}`;
+    document.getElementById("winsInARow").value = bestWinStreak;
 
     // Начало игры
 
