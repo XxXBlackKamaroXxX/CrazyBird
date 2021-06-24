@@ -2,7 +2,7 @@ let mouseUse = false;
 let keyboardUse = false;
 let touchUse = false;
 let highScore = 0;
-localStorage.setItem('highScore', highScore);
+localStorage.setItem('scoreHigh', highScore);
 let end = false;
 
 const fly = new Audio();
@@ -225,9 +225,9 @@ function game() {
                 if (highScore < score) {
                     highScore = score;
                 }
-                if (localStorage.getItem('highScore', highScore) < highScore) {
-                    localStorage.removeItem('highScore');
-                    localStorage.setItem('highScore', highScore);
+                if (localStorage.getItem('scoreHigh', highScore) < highScore) {
+                    localStorage.removeItem('scoreHigh');
+                    localStorage.setItem('scoreHigh', highScore);
                 }
                 clearInterval(mainInterval);
                 end = true;
