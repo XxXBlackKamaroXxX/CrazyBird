@@ -1,7 +1,5 @@
 let totalDeathCount = 0;
 let totalVictoriesCount = 0;
-localStorage.setItem('loseNumber', totalDeathCount);
-localStorage.setItem('winNumber', totalVictoriesCount);
 let size = 0;
 function game() {
     function draw() {
@@ -103,10 +101,6 @@ function game() {
                             openedMass[cell_x][cell_y] = true;
                             if (openedCells + numberOfExploredMines >= numberOfCells || numberOfExploredMines == numberOfMines) {
                                 totalVictoriesCount++;
-                                if (localStorage.getItem('winNumber') < totalVictoriesCount) {
-                                    localStorage.removeItem("winNumber");
-                                    localStorage.setItem("winNumber", totalVictoriesCount);
-                                }
                                 showMenu();
                             }
                         }
@@ -123,10 +117,6 @@ function game() {
                                             openedCells++;
                                             if (openedCells + numberOfExploredMines >= numberOfCells || numberOfExploredMines == numberOfMines) {
                                                 totalVictoriesCount++;
-                                                if (localStorage.getItem('winNumber') < totalVictoriesCount) {
-                                                    localStorage.removeItem("winNumber");
-                                                    localStorage.setItem("winNumber", totalVictoriesCount);
-                                                }
                                                 showMenu();
                                             }
                                         }
@@ -142,10 +132,6 @@ function game() {
                         ctx.fillStyle = 'red';
                         ctx.fillRect(cell_x * cellSize, cell_y * cellSize, cellDrawSize, cellDrawSize);
                         totalDeathCount++;
-                        if (localStorage.getItem('loseNumber') < totalDeathCount) {
-                            localStorage.removeItem("loseNumber");
-                            localStorage.setItem("loseNumber", totalDeathCount);
-                        }
                         showMenu();
                     }
                 }
@@ -171,10 +157,6 @@ function game() {
                         checkedMass[cell_x][cell_y] = true;
                         if (openedCells + numberOfExploredMines >= numberOfCells || numberOfExploredMines == numberOfMines) {
                             totalVictoriesCount++;
-                            if (localStorage.getItem('winNumber') < totalVictoriesCount) {
-                                localStorage.removeItem("winNumber");
-                                localStorage.setItem("winNumber", totalVictoriesCount);
-                            }
                             showMenu();
                         }
                     }
@@ -261,16 +243,13 @@ info.innerHTML = "Введите размер поля (10 - 25), затем н�
 info.setAttribute('id', 'info');
 
 
-//Создание кнопок начала игры/выхода
+//Создание кнопок 
 
 let playButton = document.createElement('button');
 playButton.innerHTML = 'Играть';
 playButton.setAttribute('id', 'playButton');
 
-let exit = document.createElement('a', 'exit');
-exit.textContent = "Выход";
-exit.href = 'https://github.com/kofes/lab2';
-exit.setAttribute('id', 'exit');
+let bombSender = document.getElementById('bombSender');
 
 
 // Объединение элементов заголовка
@@ -285,13 +264,12 @@ header.append(info);
 
 buttons.append(playButton);
 buttons.append(sizeInput);
-buttons.append(exit);
-
 
 // Объединение блоков (с заголовком и с кнопками)
 
 menu.append(header);
 menu.append(buttons);
+menu.append(bombSender);
 
 
 // Прогрузка меню после первого запуска
@@ -312,6 +290,7 @@ function showMenu() {
 
     explosiveDeaths.innerHTML = `Общее число смертей = ${totalDeathCount}`;
     deactivatedFields.innerHTML = `Общее число побед = ${totalVictoriesCount}`;
+    document.getElementById("countOfWins").value = totalVictoriesCount;
 
     // Начало игры
 

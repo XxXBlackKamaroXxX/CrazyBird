@@ -93,7 +93,6 @@ button:hover {
     background: #80808042;
     font-size: 1.5rem;
     text-decoration: none;
-    color: #75f2ff;
     cursor: default;
     border-width: 2px;
     border-style: outset;
@@ -106,5 +105,9 @@ button:hover {
 #exit:hover {
     cursor: pointer;
     transform: scale(2.1);
+}
+
+#countOfWins {
+    display: none;
 }
 
