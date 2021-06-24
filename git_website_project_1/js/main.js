@@ -51,7 +51,7 @@ function game() {
     document.onkeydown = function(event) {
         if (event.keyCode == 27) {
             if (localStorage.getItem('eatenApples', totalEatenApples) < totalEatenApples) {
-                localStorage.removeItem('eatanApples');
+                localStorage.removeItem('eatenApples');
                 localStorage.setItem('eatenApples', totalEatenApples);
             }
             if (localStorage.getItem('winStreak', bestWinStreak) < bestWinStreak) {
