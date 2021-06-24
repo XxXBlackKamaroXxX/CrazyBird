@@ -2,6 +2,7 @@ let mouseUse = false;
 let keyboardUse = false;
 let touchUse = false;
 let highScore = 0;
+localStorage.setItem('highScore', highScore);
 let end = false;
 
 const fly = new Audio();
@@ -224,6 +225,10 @@ function game() {
                 if (highScore < score) {
                     highScore = score;
                 }
+                if (localStorage.getItem('highScore', highScore) < highScore) {
+                    localStorage.removeItem('highScore');
+                    localStorage.setItem('highScore', highScore);
+                }
                 clearInterval(mainInterval);
                 end = true;
                 showMenu();
@@ -270,9 +275,16 @@ function game() {
 
 let cvs = document.getElementById('canvas');
 cvs.style.display = 'none';
+
 let menu = document.getElementById('menu');
+
 let header = document.getElementById('header');
+header.style.display = 'flex';
+
 let buttons = document.getElementById('buttons');
+buttons.style.display = 'flex';
+
+
 
 
 // Создание заголовка
@@ -305,6 +317,7 @@ touchButton.setAttribute('id', 'touch');
 
 // Возврат в библиотеку
 let exit = document.createElement('a', 'exit');
+exit.style.display = 'block';
 exit.textContent = "Выход";
 exit.href = 'https://github.com/kofes/lab2';
 exit.setAttribute('id', 'exit');
@@ -338,9 +351,7 @@ function showMenu() {
 
     cvs.style.display = 'none';
     menu.style.display = 'flex';
-    header.style.display = 'flex';
-    buttons.style.display = 'flex';
-    exit.style.display = 'block';
+    
 
     //Обновление игровых данных
 
@@ -381,9 +392,6 @@ function showMenu() {
         fly.volume = 0.7;
         cvs.style.display = 'block';
         menu.style.display = 'none';
-        header.style.display = 'none';
-        buttons.style.display = 'none';
-        exit.style.display = 'none';
         game();
     }
 }
