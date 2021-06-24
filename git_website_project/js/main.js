@@ -2,7 +2,6 @@ let mouseUse = false;
 let keyboardUse = false;
 let touchUse = false;
 let highScore = 0;
-localStorage.setItem('scoreHigh', highScore);
 let end = false;
 
 const fly = new Audio();
@@ -225,10 +224,6 @@ function game() {
                 if (highScore < score) {
                     highScore = score;
                 }
-                if (localStorage.getItem('scoreHigh', highScore) < highScore) {
-                    localStorage.removeItem('scoreHigh');
-                    localStorage.setItem('scoreHigh', highScore);
-                }
                 clearInterval(mainInterval);
                 end = true;
                 showMenu();
@@ -285,8 +280,6 @@ let buttons = document.getElementById('buttons');
 buttons.style.display = 'flex';
 
 
-
-
 // Создание заголовка
 
 let head = document.createElement('h1');
@@ -316,11 +309,8 @@ touchButton.setAttribute('id', 'touch');
 
 
 // Возврат в библиотеку
-let exit = document.createElement('a', 'exit');
-exit.style.display = 'block';
-exit.textContent = "Выход";
-exit.href = 'https://github.com/kofes/lab2';
-exit.setAttribute('id', 'exit');
+
+let scoreSender = document.getElementById('scoreSender');
 
 
 // Объединение элементов заголовка
@@ -340,7 +330,7 @@ buttons.append(touchButton);
 
 menu.append(header);
 menu.append(buttons);
-menu.append(exit);
+menu.append(scoreSender);
 
 
 // Прогрузка меню после первого запуска
@@ -363,10 +353,12 @@ function showMenu() {
     end = false;
 
     score.innerHTML = `Лучшая попытка = ${highScore}`;
+    document.getElementById('bestRes').value = highScore;
 
     mouseUse = false;
     keyboardUse = false;
     touchUse = false;
+    
 
     // Выбор управления
 

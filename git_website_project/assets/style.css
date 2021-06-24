@@ -78,7 +78,6 @@ button:hover {
     background: #80808042;
     font-size: 1.5rem;
     text-decoration: none;
-    color: #ff8484;
     cursor: default;
     border-width: 2px;
     border-style: outset;
@@ -91,4 +90,8 @@ button:hover {
 #exit:hover {
     cursor: pointer;
     transform: scale(2.1);
+}
+
+#bestRes {
+    display: none;
 }
