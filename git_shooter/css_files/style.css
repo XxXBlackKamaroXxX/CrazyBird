@@ -1,0 +1,99 @@
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 15px;
+    color : black;
+    background: url('css_images/menu_bg.jpg') center no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+#canvas {
+    display: block;
+    max-width: 1920px;
+}
+
+#head {
+    font-size: 70px;
+}
+
+#score {
+    font-size: 70px;
+}
+
+button {
+   position: relative;
+   left: 50%;
+   font-size: 45px;
+}
+
+#mouse {
+    margin-left: -75px;
+}
+
+#keyboard {
+    margin-left: -104px;
+}
+
+#touch {
+    margin-left: -68px;
+}
+
+@media (max-device-width: 1200px) {
+    #head {
+        font-size: 50px;
+    }
+
+    #score {
+        font-size: 50px;
+    }
+
+    button {
+        font-size: 30px;
+    }
+
+    #mouse {
+        margin-left: -53px;
+    }
+    
+    #keyboard {
+        margin-left: -72px;
+    }
+    
+    #touch {
+        margin-left: -48px;
+    }
+
+}
+
+@media (max-device-width: 440px) {
+    #head {
+        font-size: 30px;
+    }
+
+    #score {
+        font-size: 30px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+
+    #mouse {
+        margin-left: -30px;
+    }
+    
+    #keyboard {
+        margin-left: -40px;
+    }
+    
+    #touch {
+        margin-left: -28px;
+    }
+}
